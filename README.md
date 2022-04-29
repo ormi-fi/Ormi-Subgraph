@@ -1,7 +1,15 @@
 
-# Aave Protocol Subgraphs
+# Ormi Protocol Subgraphs
 
-The Aave Protocol subgraphs index data from the protocol smart contracts, and expose a GraphQL endpoint hosted by [The Graph](https://thegraph.com).
+Subgraph endpoints:
+Queries (HTTP):     https://api.thegraph.com/subgraphs/name/schlagonia/ormi-finance
+Subscriptions (WS): wss://api.thegraph.com/subgraphs/name/schlagonia/ormi-finance
+
+Prepare subgraph Scripts are manually set to network=Kovan and blockchain=ethereoum
+SLUG still needs to be adjusted in Scripts and deploy script updated to newest version
+-SG
+
+The Ormi Protocol subgraphs index data from the protocol smart contracts, and expose a GraphQL endpoint hosted by [The Graph](https://thegraph.com).
 
 - [Active Deployments](#active-deployments)
 - [Usage](#usage)
@@ -21,7 +29,7 @@ The Aave Protocol subgraphs index data from the protocol smart contracts, and ex
 
 ## Usage
   
-Subgraphs can be queried directly from the graph explorer, or from [another application](https://thegraph.com/docs/en/developer/querying-from-your-app/). The following section gives common queries for Aave protocol data.
+Subgraphs can be queried directly from the graph explorer, or from [another application](https://thegraph.com/docs/en/developer/querying-from-your-app/). The following section gives common queries for Ormi protocol data.
 
 ### Queries
 
@@ -34,13 +42,13 @@ See [TheGraph API](https://thegraph.com/docs/en/developer/graphql-api/) docs for
 
 The `reserve` entity gives data on the assets of the protocol including rates, configuration, and total supply/borrow amounts.
 
-The aave-utilities library includes a [`formatReserves`](https://github.com/aave/aave-utilities/#formatReserves) function which can be used to format all data into a human readable format. The queries to fetch data for passing into this function can be found [here](https://github.com/aave/aave-utilities#subgraph).
+The Ormi-utilities library includes a [`formatReserves`](https://github.com/aave/aave-utilities/#formatReserves) function which can be used to format all data into a human readable format. The queries to fetch data for passing into this function can be found [here](https://github.com/aave/aave-utilities#subgraph).
 
 
-Why does the raw subgraph data not match app.aave.com?
+Why does the raw subgraph data not match app.Ormi.com?
 
  - aToken and debtToken balances are continuously increasing. The subgraph provides a snapshot of the balance at the time of indexing (not querying), which means fields affected by interest such as `totalLiquidity`, `availableLiquidity`, and `totalCurrentVariableDebt` will need to be formatted to get real-time values
- - All rates (liquidityRate, variableBorrowRate, stableBorrowRate) are expressed as *APR* with RAY units (10**27). To convert to the APY percentage as shown on the Aave frontend: `supplyAPY = (((1  +  ((liquidityRate / 10**27) /  31536000))  ^  31536000)  -  1) * 100`. [`formatReserves`](https://github.com/aave/aave-utilities/#formatReserves) will perform this calculation for you.
+ - All rates (liquidityRate, variableBorrowRate, stableBorrowRate) are expressed as *APR* with RAY units (10**27). To convert to the APY percentage as shown on the Ormi frontend: `supplyAPY = (((1  +  ((liquidityRate / 10**27) /  31536000))  ^  31536000)  -  1) * 100`. [`formatReserves`](https://github.com/aave/aave-utilities/#formatReserves) will perform this calculation for you.
 
 </details>
 
@@ -52,9 +60,9 @@ Why does the raw subgraph data not match app.aave.com?
 
 The `userReserve` entity gives the supply and borrow balances for a particular user along with the underlying reserve data.
 
-The aave-utilities library includes a [`formatUserSummary`](https://github.com/aave/aave-utilities#formatUserSummary) function which can be used to format all data into a human readable format. The queries to fetch data for passing into this function can be found [here](https://github.com/aave/aave-utilities#subgraph).
+The Ormi-utilities library includes a [`formatUserSummary`](https://github.com/aave/aave-utilities#formatUserSummary) function which can be used to format all data into a human readable format. The queries to fetch data for passing into this function can be found [here](https://github.com/aave/aave-utilities#subgraph).
 
-Why does the raw subgraph data not match my account balances on app.aave.com?
+Why does the raw subgraph data not match my account balances on app.Ormi.com?
 
  - aToken and debtToken balances are continuously increasing. The subgraph provides a snapshot of the balance at the time of indexing (not querying), which means fields affected by interest such as `currentATokenBalance`, `currentVariableDebt`, and `currentStableDebt` will need to be formatted to get the real-time values
 
@@ -161,7 +169,7 @@ To query based on a historical timestamp, you will need to convert the timstamp 
   
  The Graph places a limit on the number of items which can returned by a single query (currently 100). To fetch a larger number of items, the `first` and `skip` parameters can be used to create paginated queries. 
 
-For example, if you wanted to fetch the first 200 transactions for an Aave market, you can't query 200 items at once, but you can achieve the same thing by concatenating the output of these queries:
+For example, if you wanted to fetch the first 200 transactions for an Ormi market, you can't query 200 items at once, but you can achieve the same thing by concatenating the output of these queries:
 ```
 {
   userTransactions(orderBy: timestamp, orderDirection: asc, first: 100, skip: 0){
@@ -203,7 +211,7 @@ npm run deploy:hosted:mainnet
 
 ### Troubleshooting
 
-If a subgraph encounters an error while indexing, the logs on the explorer may not display the error. You can check for errors on a pending or synced subgraph with the following commands, replacing `aave/protocol-v2` with your subgraph name:
+If a subgraph encounters an error while indexing, the logs on the explorer may not display the error. You can check for errors on a pending or synced subgraph with the following commands, replacing `Ormi-finance` with your subgraph name:
 
 Pending:
 ```

@@ -1,11 +1,11 @@
 {
   "network": "kovan",
   "AaveOracleAddress": "0xcbCEAD9268B37Cf183f98728c465D7aA7Ee9F610",
-  "AaveOracleStartBlock": 31144863,
+  "AaveOracleStartBlock": 31144830,
   "ChainlinkSourcesRegistryAddress": "0x0000000000000000000000000000000000000000",
   "ChainlinkSourcesRegistryStartBlock": 21949320,
   "LendingPoolAddressesProviderRegistryAddress": "0x86Eb06CFfD2130Ee36456d3Eb47Be657A5d1D0D4",
-  "LendingPoolAddressesProviderRegistryStartBlock": 31144848,
+  "LendingPoolAddressesProviderRegistryStartBlock": 31144830,
   "UniswapLiquiditySwapAdapterAddress": "0x0000000000000000000000000000000000000000",
   "UniswapLiquiditySwapAdapterStartBlock": 22703070,
   "UniswapRepayAdapterAddress": "0x0000000000000000000000000000000000000000",

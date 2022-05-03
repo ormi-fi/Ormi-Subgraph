@@ -5,9 +5,13 @@ Subgraph endpoints:
 Queries (HTTP):     https://api.thegraph.com/subgraphs/name/schlagonia/ormi-finance
 Subscriptions (WS): wss://api.thegraph.com/subgraphs/name/schlagonia/ormi-finance
 
-Prepare subgraph Scripts are manually set to network=Kovan and blockchain=ethereoum
-SLUG still needs to be adjusted in Scripts and deploy script updated to newest version
--SG
+To Use:
+-Need to run the build so it generates a subgraph.yaml
+-Update the config file for which chain you are using. Set any addresses that dont apply to address(0)
+-Manually update the scripts in package.json
+---Prepare subgraph Scripts are manually set to network=Kovan and blockchain=ethereom. Will need to update for other chains
+---SLUG still needs to be manually adjusted in Scripts to what subgraph is being used
+
 
 The Ormi Protocol subgraphs index data from the protocol smart contracts, and expose a GraphQL endpoint hosted by [The Graph](https://thegraph.com).
 
@@ -17,15 +21,8 @@ The Ormi Protocol subgraphs index data from the protocol smart contracts, and ex
 
  
 ## Active deployments
--  [ETH Mainnet V2](https://thegraph.com/hosted-service/subgraph/aave/protocol-v2)
--  [Polygon V2](https://thegraph.com/hosted-service/subgraph/aave/aave-v2-matic)
--  [Avalanche V2](https://thegraph.com/hosted-service/subgraph/aave/protocol-v2-avalanche)
--  [Polygon V3](https://thegraph.com/hosted-service/subgraph/aave/protocol-v3-polygon)
--  [Avalanche V3](https://thegraph.com/hosted-service/subgraph/aave/protocol-v3-avalanche)
--  [Arbitrum V3](https://thegraph.com/hosted-service/subgraph/aave/protocol-v3-arbitrum)
--  [Optimism V3](https://thegraph.com/hosted-service/subgraph/aave/protocol-v3-optimism)
--  [Fantom V3](https://thegraph.com/hosted-service/subgraph/aave/protocol-v3-fantom)
-- TheGraph is not available yet on Harmony
+-  [Kovan](https://thegraph.com/hosted-service/subgraph/schlagonia/ormi-finance)
+
 
 ## Usage
   
@@ -70,7 +67,7 @@ Why does the raw subgraph data not match my account balances on app.Ormi.com?
 #### Transaction History
 
 
-The `pool` parameter is the LendingPoolAddressesProvider (V2) or PoolAddressesProvider (V3) address which you can get from the [deployed contracts](https://docs.aave.com/developers/deployed-contracts/deployed-contracts) page.
+The `pool` parameter is the LendingPoolAddressesProvider (V2) address
 
 ```
 userTransactions(

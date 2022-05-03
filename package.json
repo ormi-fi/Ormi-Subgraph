@@ -1,14 +1,14 @@
 {
   "name": "protocol-subgraphs",
   "version": "1.0.0",
-  "description": "This package contains subgraphs of the Ormi protocol v2",
+  "description": "This package contains subgraphs of the Ormi protocol",
   "scripts": {
     "generate:schema": "cp ./schemas/V2.schema.graphql  schema.graphql",
     "prepare:subgraph": "mustache ./config/kovan-v2.json ./templates/ethereum.subgraph.template.yaml > subgraph.yaml && del -rf generated && npm run generate:schema && npm run subgraph:codegen && npm run subgraph:build",
     "subgraph:codegen": "graph codegen --output-dir ./generated",
     "subgraph:build": "graph build",
-    "subgraph:deploy:hosted": "graph deploy $SLUG --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/ --access-token $ACCESS_TOKEN",
-    "deploy:hosted:kovan": "env-cmd npm run prepare:subgraph && SLUG=aave/protocol-v2-kovan env-cmd npm run subgraph:deploy:hosted --VERSION=v2 BLOCKCHAIN=ethereum NETWORK=kovan",
+    "subgraph:deploy:hosted": "graph deploy schlagonia/ormi-finance --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/ --access-token $ACCESS_TOKEN",
+    "deploy:hosted:kovan": "env-cmd npm run prepare:subgraph && SLUG=schlagonia/ormi-finance env-cmd npm run subgraph:deploy:hosted --VERSION=v2 BLOCKCHAIN=ethereum NETWORK=kovan",
     "deploy:hosted:mainnet": "VERSION=v2 BLOCKCHAIN=ethereum NETWORK=mainnet env-cmd npm run prepare:subgraph && SLUG=aave/protocol-v2 env-cmd npm run subgraph:deploy:hosted",
     "deploy:hosted:matic": "VERSION=v2 BLOCKCHAIN=matic NETWORK=matic env-cmd npm run prepare:subgraph && SLUG=aave/aave-v2-matic env-cmd npm run subgraph:deploy:hosted",
     "deploy:hosted:mumbai": "VERSION=v2 BLOCKCHAIN=matic NETWORK=mumbai env-cmd npm run prepare:subgraph && SLUG=aave/aave-v2-polygon-mumbai env-cmd npm run subgraph:deploy:hosted",

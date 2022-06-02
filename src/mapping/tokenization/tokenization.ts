@@ -309,7 +309,7 @@ export function handleVariableTokenMint(event: VTokenMint): void {
 
   let userReserve = getOrInitUserReserve(from, vToken.underlyingAssetAddress, event);
 
-  let user = getOrInitUser(event.params.from);
+  let user = getOrInitUser(from);
   if (
     userReserve.scaledVariableDebt.equals(zeroBI()) &&
     userReserve.principalStableDebt.equals(zeroBI())

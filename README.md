@@ -23,7 +23,7 @@ The Ormi Protocol subgraphs index data from the protocol smart contracts, and ex
 
  
 ## Active deployments
--  [Kovan](https://thegraph.com/hosted-service/subgraph/victorfei/ormi?selected=playground)
+-  [Kovan](https://thegraph.com/hosted-service/subgraph/schlagonia/ormi-finance?version=current))
 
 
 ## Usage

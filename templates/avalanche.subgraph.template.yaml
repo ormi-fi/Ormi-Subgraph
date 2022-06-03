@@ -1,6 +1,6 @@
 specVersion: 0.0.4
-description: Aave protocol subgraph
-repository: https://github.com/aave/protocol-subgraphs
+description: Ormi protocol subgraph
+repository: https://github.com/ormi-fi/lending-protocol-subgraph
 schema:
   file: ./schema.graphql
 dataSources:

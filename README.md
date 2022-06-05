@@ -1,16 +1,18 @@
 
 # Ormi Protocol Subgraphs
 
-Subgraph endpoints:
-Queries (HTTP):     https://api.thegraph.com/subgraphs/name/schlagonia/ormi-finance
-Subscriptions (WS): wss://api.thegraph.com/subgraphs/name/schlagonia/ormi-finance
-
 ## To Use:
- - Need to run the build so it generates a subgraph.yaml
  - Update the config file for which chain you are using. Set any addresses that dont apply to address(0)
- - Manually update the scripts in package.json
- - Prepare subgraph Scripts are manually set to network=Kovan and blockchain=ethereom. Will need to update for other chains
+ - Need to run the build so it generates a subgraph.yaml
+
+ - Prepare subgraph Scripts are manually set to network=Kovan and blockchain=ethereum. Will need to update for other chains
  - SLUG still needs to be manually adjusted in Scripts to what subgraph is being used
+
+### To Deploy
+ - npm run subgraph:codegen
+ - npm run subgraph:build
+ - graph deploy slug/subgraph-Name
+  -- Choose hosted service and verify with key if prompted 
 
 
 The Ormi Protocol subgraphs index data from the protocol smart contracts, and expose a GraphQL endpoint hosted by [The Graph](https://thegraph.com).
@@ -21,7 +23,7 @@ The Ormi Protocol subgraphs index data from the protocol smart contracts, and ex
 
  
 ## Active deployments
--  [Kovan](https://thegraph.com/hosted-service/subgraph/schlagonia/ormi-finance)
+-  [Kovan](https://thegraph.com/hosted-service/subgraph/schlagonia/ormi-finance?version=current)
 
 
 ## Usage

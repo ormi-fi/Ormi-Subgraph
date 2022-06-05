@@ -292,17 +292,14 @@ export function handleVariableTokenMint(event: VTokenMint): void {
   let vToken = getOrInitVToken(event.address);
   let poolReserve = getOrInitReserve(vToken.underlyingAssetAddress, event);
 
-  let from = event.params.from;
-  if (from.toHexString() != event.params.onBehalfOf.toHexString()) {
-    from = event.params.onBehalfOf;
-  }
+  let from = event.params.onBehalfOf
 
   let value = event.params.value;
   let index = event.params.index;
 
   let userReserve = getOrInitUserReserve(from, vToken.underlyingAssetAddress, event);
 
-  let user = getOrInitUser(event.params.from);
+  let user = getOrInitUser(from);
   if (
     userReserve.scaledVariableDebt.equals(zeroBI()) &&
     userReserve.principalStableDebt.equals(zeroBI())
@@ -343,10 +340,8 @@ export function handleVariableTokenMint(event: VTokenMint): void {
 export function handleStableTokenMint(event: STokenMint): void {
   let borrowedAmount = event.params.amount;
   let sToken = getOrInitSToken(event.address);
-  let from = event.params.user;
-  if (from.toHexString() != event.params.onBehalfOf.toHexString()) {
-    from = event.params.onBehalfOf;
-  }
+  let from = event.params.onBehalfOf;
+  
   let userReserve = getOrInitUserReserve(from, sToken.underlyingAssetAddress, event);
 
   let poolReserve = getOrInitReserve(sToken.underlyingAssetAddress, event);
